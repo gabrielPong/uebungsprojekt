@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APXGP | Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body class="fade-page">
+
+    <header class="topbar">
+        <div class="topbar-inner header-row">
+            <div class="logo">
+                <img src="images/logo.png" alt="APXGP Logo">
+            </div>
+
+            <button class="burger" id="burgerBtn" aria-label="Open menu">☰</button>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="stats.html">Stats</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="team.html">Team</a>
+                <a href="contact.html" class="active">Contact</a>
+                <a href="impressum.html">Impressum</a>
+                <a href="sponsors.html">Sponsors</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="contact-wrapper">
+        <div class="contact-inner">
+
+            <div class="contact-text">
+                <h1>Contact APXGP</h1>
+                <p>
+                    Want to get in touch with the team? Sponsors, media, career inquiries —
+                    send us a message and we’ll come back to you.
+                </p>
+
+                <div class="contact-info-block">
+                    <p><span class="label">Team HQ:</span> Silverstone, UK</p>
+                    <p><span class="label">Press:</span> media@apxgp.example</p>
+                    <p><span class="label">Partners:</span> partners@apxgp.example</p>
+                </div>
+            </div>
+
+            <form class="contact-form" id="contactForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Full Name<span class="req">*</span></label>
+                    <input type="text" id="name" name="name" placeholder="Your name">
+                    <p class="error-msg" id="nameError"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email<span class="req">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com">
+                    <p class="error-msg" id="emailError"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message<span class="req">*</span></label>
+                    <textarea id="message" name="message" rows="5" placeholder="Your message to APXGP..."></textarea>
+                    <p class="error-msg" id="messageError"></p>
+                </div>
+
+                <button type="submit" class="btn btn-gold send-btn">Send Message</button>
+
+                <p class="form-success" id="formSuccess" hidden>
+                    Message sent. Thank you.
+                </p>
+            </form>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 APXGP. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mainNav = document.getElementById('mainNav');
+        burgerBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+        });
+
+        const form = document.getElementById("contactForm");
+        const nameField = document.getElementById("name");
+        const emailField = document.getElementById("email");
+        const messageField = document.getElementById("message");
+
+        const nameError = document.getElementById("nameError");
+        const emailError = document.getElementById("emailError");
+        const messageError = document.getElementById("messageError");
+
+        const successMsg = document.getElementById("formSuccess");
+
+        function validateEmailFormat(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            nameError.textContent = "";
+            emailError.textContent = "";
+            messageError.textContent = "";
+            successMsg.hidden = true;
+
+            let valid = true;
+
+            if (nameField.value.trim() === "") {
+                nameError.textContent = "Please enter your name.";
+                valid = false;
+            }
+
+            if (emailField.value.trim() === "") {
+                emailError.textContent = "Please enter your email.";
+                valid = false;
+            } else if (!validateEmailFormat(emailField.value.trim())) {
+                emailError.textContent = "Please enter a valid email (example@domain.com).";
+                valid = false;
+            }
+
+            if (messageField.value.trim() === "") {
+                messageError.textContent = "Please enter a message.";
+                valid = false;
+            }
+
+            if (valid) {
+                successMsg.hidden = false;
+                form.reset();
+            }
+        });
+    </script>
+
+</body>
+</html>

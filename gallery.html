@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APXGP | Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body class="fade-page">
+
+    <header class="topbar">
+        <div class="topbar-inner header-row">
+            <div class="logo">
+                <img src="images/logo.png" alt="APXGP Logo">
+            </div>
+
+            <button class="burger" id="burgerBtn" aria-label="Open menu">☰</button>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="stats.html">Stats</a>
+                <a href="gallery.html" class="active">Gallery</a>
+                <a href="team.html">Team</a>
+                <a href="contact.html">Contact</a>
+                <a href="impressum.html">Impressum</a>
+                <a href="sponsors.html">Sponsors</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="gallery-header">
+        <h1>Gallery</h1>
+        <p>Race weekend, garage work, and everything in between.</p>
+    </section>
+
+    <section class="carousel-section">
+        <div class="carousel-frame" data-slider="1">
+            <div class="carousel-track">
+                <div class="carousel-slide"><img src="images/race-day.png" alt="APXGP Photo 1"></div>
+                <div class="carousel-slide"><img src="images/ruben-sonny.png" alt="APXGP Photo 2"></div>
+                <div class="carousel-slide"><img src="images/racing.jpg" alt="APXGP Photo 3"></div>
+                <div class="carousel-slide"><img src="images/podium.png" alt="APXGP Photo 4"></div>
+                <div class="carousel-slide"><img src="images/gallary.png" alt="APXGP Photo 5"></div>
+            </div>
+            <button class="carousel-btn prev">&#10094;</button>
+            <button class="carousel-btn next">&#10095;</button>
+            <div class="carousel-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="carousel-section">
+        <div class="carousel-frame" data-slider="2">
+            <div class="carousel-track">
+                <div class="carousel-slide"><img src="images/race.png" alt="Race Photo 1"></div>
+                <div class="carousel-slide"><img src="images/race2.png" alt="Race Photo 2"></div>
+                <div class="carousel-slide"><img src="images/race3.png" alt="Race Photo 3"></div>
+                <div class="carousel-slide"><img src="images/race4.png" alt="Race Photo 4"></div>
+                <div class="carousel-slide"><img src="images/race5.png" alt="Race Photo 5"></div>
+            </div>
+            <button class="carousel-btn prev">&#10094;</button>
+            <button class="carousel-btn next">&#10095;</button>
+            <div class="carousel-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 APXGP. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mainNav = document.getElementById('mainNav');
+        burgerBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+        });
+
+        class Carousel {
+            constructor(frameEl) {
+                this.frame = frameEl;
+                this.track = frameEl.querySelector('.carousel-track');
+                this.slides = Array.from(frameEl.querySelectorAll('.carousel-slide'));
+                this.nextBtn = frameEl.querySelector('.carousel-btn.next');
+                this.prevBtn = frameEl.querySelector('.carousel-btn.prev');
+                this.dots = Array.from(frameEl.querySelectorAll('.dot'));
+                this.currentIndex = 0;
+                this.autoTimer = null;
+                this.autoDelay = 5000;
+                this.updateCarousel(0);
+                this.startAuto();
+                this.addEvents();
+            }
+            updateCarousel(index) {
+                if (index < 0) this.currentIndex = this.slides.length - 1;
+                else if (index >= this.slides.length) this.currentIndex = 0;
+                else this.currentIndex = index;
+                const offset = -this.currentIndex * 100;
+                this.track.style.transform = `translateX(${offset}%)`;
+                this.dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === this.currentIndex);
+                });
+            }
+            nextSlide() { this.updateCarousel(this.currentIndex + 1); }
+            prevSlide() { this.updateCarousel(this.currentIndex - 1); }
+            goToSlide(n) { this.updateCarousel(n); }
+            startAuto() {
+                this.stopAuto();
+                this.autoTimer = setInterval(() => { this.nextSlide(); }, this.autoDelay);
+            }
+            stopAuto() {
+                if (this.autoTimer) {
+                    clearInterval(this.autoTimer);
+                    this.autoTimer = null;
+                }
+            }
+            restartAuto() { this.startAuto(); }
+            addEvents() {
+                this.nextBtn.addEventListener('click', () => { this.nextSlide(); this.restartAuto(); });
+                this.prevBtn.addEventListener('click', () => { this.prevSlide(); this.restartAuto(); });
+                this.dots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                        const slideNum = parseInt(dot.getAttribute('data-slide'));
+                        this.goToSlide(slideNum);
+                        this.restartAuto();
+                    });
+                });
+            }
+        }
+        const frames = document.querySelectorAll('.carousel-frame');
+        frames.forEach(frame => { new Carousel(frame); });
+    </script>
+
+</body>
+</html>

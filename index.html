@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APXGP | Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body class="fade-page">
+
+    <header class="topbar">
+        <div class="topbar-inner header-row">
+            <div class="logo">
+                <img src="images/logo.png" alt="APXGP Logo">
+            </div>
+
+            <button class="burger" id="burgerBtn" aria-label="Open menu">☰</button>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html" class="active">Home</a>
+                <a href="stats.html">Stats</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="team.html">Team</a>
+                <a href="contact.html">Contact</a>
+                <a href="impressum.html">Impressum</a>
+                <a href="sponsors.html">Sponsors</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-image">
+        <img src="images/index.jpg" alt="APXGP Index Image">
+    </section>
+
+    <section class="about">
+        <div class="about-inner">
+            <h1>Speed. Precision. ApexGP.</h1>
+            <p>
+                At APXGP, we redefine the limits of performance. 
+                Every lap, every corner, every decision is driven by innovation and control.
+                Our passion for motorsport fuels everything we do — 
+                from the garage to the grid.
+            </p>
+            
+            <div class="about-btn-row">
+                <a href="team.html" class="btn btn-gold">Meet the Team</a>
+                <a href="stats.html" class="btn btn-gold">See 2025 Results</a>
+            </div>
+        </div>
+
+        <section class="about-section">
+            <div class="about-inner">
+                <h1 class="section-title">About APXGP</h1>
+
+                <p class="about-text">
+                    APXGP is an independent Formula One team built on one idea: <strong>we don’t wait for the future — we engineer it.</strong> 
+                    We combine race-proven experience with next-generation talent to create a car that can fight anywhere: on high-speed straights, 
+                    in dirty air, under pressure, in the final laps when it actually matters.
+                </p>
+
+                <p class="about-text">
+                    Our philosophy is simple. Precision over ego. Data over noise. Execution over talk. 
+                    Every lap is treated like a statement: controlled aggression, zero hesitation, maximum commitment.
+                    From power unit calibration to tyre life management, we operate with one goal — extract 100% pace when it counts.
+                </p>
+
+                <p class="about-text">
+                    APXGP is led on track by <strong>Sonny Hayes</strong>, a veteran with elite race craft, late-braking instinct, 
+                    and ridiculous one-lap discipline — and <strong>Joshua Pearce</strong>, raw pace, relentless qualifying speed, 
+                    and no fear in wheel-to-wheel fights. Together they form a driver lineup built to score, not just survive.
+                </p>
+
+                <p class="about-text">
+                    Off track, APXGP runs as a performance company, not a nostalgia brand. 
+                    We build our own identity, our own culture, and our own future.
+                    No excuses. No comfort zones. Just results.
+                </p>
+
+                <p class="about-quote">
+                    “We’re not here to follow the order. We’re here to rewrite it.”
+                </p>
+            </div>
+        </section>
+    </section>
+    
+
+    <footer class="footer">
+        <p>© 2025 APXGP. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mainNav = document.getElementById('mainNav');
+
+        burgerBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APXGP | Sponsors</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body class="fade-page">
+
+<header class="topbar">
+    <div class="topbar-inner header-row">
+        <div class="logo">
+            <img src="images/logo.png" alt="APXGP Logo">
+        </div>
+
+        <button class="burger" id="burgerBtn" aria-label="Open menu">☰</button>
+
+        <nav class="main-nav" id="mainNav">
+            <a href="index.html">Home</a>
+            <a href="stats.html">Stats</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="team.html">Team</a>
+            <a href="contact.html">Contact</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="sponsors.html" class="active">Sponsors</a>
+        </nav>
+    </div>
+</header>
+
+<section class="sponsors-header">
+    <h1>Our Sponsors</h1>
+    <p>Partners that help us push performance to the next level.</p>
+</section>
+
+<section class="sponsors-grid">
+    <div class="sponsor"><img src="images/sponsors/EA.png" alt="Sponsor 1"></div>
+    <div class="sponsor"><img src="images/sponsors/expensify.png" alt="Sponsor 2"></div>
+    <div class="sponsor"><img src="images/sponsors/geico.png" alt="Sponsor 3"></div>
+    <div class="sponsor"><img src="images/sponsors/IWC.png" alt="Sponsor 4"></div>
+    <div class="sponsor"><img src="images/sponsors/mercedes.png" alt="Sponsor 5"></div>
+    <div class="sponsor"><img src="images/sponsors/SharkNinja.png" alt="Sponsor 6"></div>
+    <div class="sponsor"><img src="images/sponsors/tommyhilfiger.png" alt="Sponsor 7"></div>
+    <div class="sponsor"><img src="images/sponsors/pirelli.png" alt="Sponsor 8"></div>
+    <div class="sponsor"><img src="images/sponsors/MSC.png" alt="Sponsor 9"></div>
+    <div class="sponsor"><img src="images/sponsors/brembo.png" alt="Sponsor 10"></div>
+    <div class="sponsor"><img src="images/sponsors/snapon.png" alt="Sponsor 11"></div>
+</section>
+
+<footer class="footer">
+    <p>© 2025 APXGP. All rights reserved.</p>
+</footer>
+
+<script>
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mainNav = document.getElementById('mainNav');
+    burgerBtn.addEventListener('click', () => {
+        mainNav.classList.toggle('open');
+    });
+</script>
+
+</body>
+</html>
