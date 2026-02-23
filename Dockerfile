@@ -1,8 +1,2 @@
-
-services:
-  web:
-    build: .
-    ports:
-      - "8090:80"
-    restart: unless-stopped
-EOF
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
